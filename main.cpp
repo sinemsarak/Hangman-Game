@@ -9,6 +9,7 @@ int guess_a_word(std::string current_word, std::string user_word_guess, int* p_w
 void print_word(std::string current_word,int *p_match_array);
 int is_win(int *p_match_array, int size);
 
+
 int main() {
 
     std::random_device rd;
@@ -20,7 +21,12 @@ int main() {
     std::string user_word_guess;
 
     while(in_game){
-        std::cout << "Welcome to Hangman Game.\nPress 1 to start the game\nPress 2 to see the rules\nPress 0 to exit: ";
+        system("cls");
+        std::cout << "\nWelcome to Hangman Game. I am happy to see you here :)\n"<< std::endl;
+        std::cout << "Press 1 to start the game" << std::endl;
+        std::cout << "Press 2 to see the rules" << std::endl;
+        std::cout << "Press 0 to exit: " << std::endl;
+        
 
         while (!(std::cin >> in_game)) {
                 std::cout << "Invalid input. Please enter a number: ";
@@ -42,7 +48,6 @@ int main() {
             std::cout <<"Press any key to continue..." <<std::endl;
             std::cin >> user_word_guess;
             system("cls");
-
         }
         
         while(in_game==1){
@@ -55,8 +60,11 @@ int main() {
             int *p_match_array {new(std::nothrow) int[current_word.length()]{}};
             int wrong_guesses = 10;
             int* p_wrong_guesses = &wrong_guesses;
-            std::cout<< "Let the game begin!\n"<<std::endl;
+            system("cls");
+            std::cout<< "\t\t\t\t\t\tLet the game begin!\n"<<std::endl;
+            std::cout <<"\t\t\t\t\t\t";
             
+
             for(size_t i = 0; i < current_word.length(); i++){
                 if (current_word[i] == ' '){
                     std::cout<< " ";
@@ -85,6 +93,7 @@ int main() {
                         std::cin.clear(); 
                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
                     }
+                    system("cls");
                     user_letter_guess = std::toupper(user_letter_guess);
                     guess_a_letter(current_word, user_letter_guess, p_match_array, p_wrong_guesses);
                     win_flag = is_win(p_match_array, current_word.length());
@@ -146,7 +155,7 @@ void guess_a_letter(std::string current_word, char user_letter_guess, int *p_mat
 }
 
 void print_word(std::string current_word,int *p_match_array){
-
+    std::cout <<"\t\t\t\t\t\t";
     for (size_t i=0; i<current_word.length(); i++){
         if (current_word[i] == ' '){
             std::cout << " ";
@@ -172,6 +181,7 @@ int is_win(int *p_match_array, int size){
 } 
 
 int guess_a_word(std::string current_word, std::string user_word_guess, int* p_wrong_guesses){
+
     if (current_word == user_word_guess){
         return 1;
     } else{
@@ -179,3 +189,4 @@ int guess_a_word(std::string current_word, std::string user_word_guess, int* p_w
         return 0;
     }
 }
+
