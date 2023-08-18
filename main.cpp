@@ -85,7 +85,7 @@ int main() {
 
             system("cls");
             std::cout <<"Welcome to 'Da Rules' for Hangman! " << std::endl;
-            std::cout <<"1- When the game starts, a random word related to the topic chosen by you will be selected" << std::endl;
+            std::cout <<"1- When the game starts, a random word related to the category chosen by you will be selected" << std::endl;
             std::cout <<"2- At the beginning, you'll see a blank word, and your task is to reveal the complete word to win. " << std::endl;
             std::cout <<"3- To uncover the word, guess one letter in each turn by entering '1'. " << std::endl;
             std::cout <<"4- Each correct guess reveals the letter's position in the word, while each incorrect guess adds a part to the hangman drawing. (You have 9 incorrect guess attempts.)" << std::endl;
@@ -147,7 +147,6 @@ int main() {
                     user_letter_guess = std::toupper(user_letter_guess);
                     guess_a_letter(current_word, user_letter_guess, p_match_array, p_wrong_guesses);
                     win_flag = is_win(p_match_array, current_word.length());
-                    std::cout << win_flag << std::endl;
                     print_word(current_word, p_match_array); 
                     drawHangman(9- wrong_guesses);
 
